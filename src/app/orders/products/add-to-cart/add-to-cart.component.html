@@ -1,0 +1,93 @@
+<ng-container *ngIf="productList != null">
+  <h3>View Cart</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Image</th>
+
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total Amount</th>
+
+        <th scope="col">Remove</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let prd of productList">
+        <th scope="row">{{ prd.id }}</th>
+        <td>{{ prd.productName }}</td>
+        <td><img src="{{ prd.productImg }}" height="120px" width="120px" /></td>
+
+        <td>{{ prd.price }}</td>
+
+        <td>
+          <button (click)="sub(prd)" type="button" class="btn btn-danger">
+            -
+          </button>
+          &nbsp;{{ prd.quantity }}&nbsp;
+
+          <button (click)="add(prd)" type="button" class="btn btn-success">
+            +
+          </button>
+        </td>
+        <td>&nbsp;{{ prd.total }}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="del(prd)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <th scope="row">Total:-</th>
+        <td>&nbsp;{{ total }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <th scope="row">Tax:-</th>
+        <td>+ {{ total * 0.1 }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <th scope="row">Grand Total:-</th>
+        <td>&nbsp;&nbsp;{{ total + total * 0.1 }}</td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="cel()">
+            Clear All
+          </button>
+        </td>
+
+        <td>
+          <button type="button" class="btn btn-success" (click)="proceed()">
+            Proced
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+<ng-container *ngIf="productList == null">
+  <h2 class="text-center">Empty Cart</h2>
+</ng-container>

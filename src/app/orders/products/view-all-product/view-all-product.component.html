@@ -1,0 +1,64 @@
+<!-- Header-->
+<header class="bg-dark py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-left text-white">
+      <h1 class="display-4 fw-bolder">Shop in style</h1>
+      <p class="lead fw-normal text-white-50 mb-0">
+        With this shop hompeage template
+      </p>
+    </div>
+  </div>
+</header>
+
+<!-- Section-->
+<section class="py-0 mt-4">
+  <div class="container px-0 px-lg-0 mt-0">
+    <div class="row">
+      <ng-container *ngFor="let prd of productList">
+        <ng-container *ngIf="prd.is_available == 1">
+          <div class="col col-lg-3 mb-5">
+            <div class="card h-100">
+              <!-- Product image-->
+              <img
+                class="card-img-top"
+                src="{{ prd.productImg }}"
+                height="250px"
+                alt="..."
+              />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">
+                    {{ prd.productName }}
+                  </h5>
+                  <p>{{ prd.decriptions.slice(0, 50) }}...</p>
+                  <!-- Product price-->
+                  <span class="text-decoration-line-through">{{
+                    +prd.price * 0.1 + +prd.price | currency: "INR":"symbol"
+                  }}</span>
+                  {{ prd.price | currency: "INR":"symbol" }}
+                </div>
+                <div class="text-center">
+                  <small class="text-muted text-center"
+                    >Rating: {{ prd.rating }} star</small
+                  >
+                </div>
+              </div>
+              <!-- Product actions-->
+              <div class="card-footer p-3 pt-0 border-top-0 bg-transparent">
+                <div class="text-center">
+                  <a
+                    class="btn btn-outline-dark mt-auto"
+                    href="/products/view-product/{{ prd.id }}"
+                    >View options</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</section>

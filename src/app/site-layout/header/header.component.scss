@@ -1,0 +1,37 @@
+div {
+  color: white !important;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: white !important;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  color: black !important;
+}
+.btn-outline-dark {
+  color: white !important;
+  border-color: white !important;
+}
+.navbar-brand {
+  color: white;
+}
+.btn-outline-dark:hover {
+  color: white !important;
+  border-color: #356ffd !important;
+}
+span {
+  padding: 10px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li,
+a {
+  color: black;
+  border: none;
+}
+
+a:hover {
+  color: white;
+  background-color: #356ffd;
+}

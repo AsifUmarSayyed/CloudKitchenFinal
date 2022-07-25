@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"><h3>Manage Category</h3></div>
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col">
+          <select
+            class="custom-select"
+            required
+            name="categoryName"
+            [(ngModel)]="categoryName"
+            (ngModelChange)="search()"
+            ngModel
+          >
+            <option selected value="">Choose Category</option>
+            <ng-container *ngFor="let c of allProductList">
+              <option [attr.value]="c.categoryName">
+                {{ c.categoryName }}
+              </option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 d-grid gap-2 d-md-flex justify-content-md-end p-2">
+      <button class="btn btn-primary me-md-2" type="button" (click)="add()">
+        Add New
+      </button>
+    </div>
+  </div>
+
+  <table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Product</th>
+
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let catg of categoryList">
+      <tr>
+        <th scope="row">{{ catg.id }}</th>
+        <td>{{ catg.categoryName }}</td>
+
+        <td>
+          <ng-container *ngFor="let prd of productList">
+            <ng-container *ngIf="catg.id == prd.category_id">
+              {{ prd.productName.trim() }}<br />
+            </ng-container>
+          </ng-container>
+        </td>
+
+        <td>
+          <button type="button" class="btn btn-info" (click)="update(catg)">
+            Update
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(catg)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

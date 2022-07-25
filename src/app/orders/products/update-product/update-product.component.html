@@ -1,0 +1,156 @@
+<h2 class="bg-light mb-2 text-center">Update Product</h2>
+<!-- Product section-->
+
+<section class="py-0" *ngFor="let productDetails of productDetails">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <div class="col-md-6">
+        <img
+          class="card-img-top mb-5 mb-md-0"
+          src="{{ productDetails.productImg }}"
+          height="500px"
+          alt="..."
+        />
+      </div>
+      <div class="col-md-6">
+        <form
+          (submit)="updateProduct(updateProductForm)"
+          #updateProductForm="ngForm"
+        >
+          <div class="col">
+            <label for="validationServer01">Product name</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              name="product_name"
+              [(ngModel)]="productDetails.productName"
+              ngModel
+            />
+          </div>
+          <div class="col">
+            <label for="validationServer02">Category Id</label>
+
+            <select
+              class="custom-select"
+              required
+              name="product_category"
+              [(ngModel)]="productDetails.category_id"
+              ngModel
+            >
+              <option selected value=" ">Choose Value</option>
+              <ng-container *ngFor="let c of categoryList">
+                <option [attr.value]="c.id">
+                  {{ c.categoryName }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+
+          <div class="col">
+            <label for="validationServer03">Description</label>
+            <textarea
+              class="form-control"
+              required
+              name="product_description"
+              [(ngModel)]="productDetails.decriptions"
+              ngModel
+            ></textarea>
+          </div>
+
+          <div class="col">
+            <label for="validationServer05">Enter Image</label>
+            <input
+              class="form-control"
+              type="file"
+              accept="Image/*"
+              #fileInput
+              (change)="uploadFile($event)"
+              required
+              name="product_image"
+              ngModel
+            />
+          </div>
+          <!-- src="{{ productDetails.imgName }}"
+              value="{{ productDetails.productImg }}"
+              [(ngModel)]="productDetails.productImg" -->
+
+          <div class="col">
+            <label for="validationServer04">Rating &nbsp;</label>
+            <select
+              class="custom-select"
+              required
+              name="product_rating"
+              [(ngModel)]="productDetails.rating"
+              ngModel
+            >
+              <option selected value=" ">Choose Value</option>
+              <option value="1">1 Star</option>
+              <option value="2">2 Star</option>
+              <option value="3">3 Star</option>
+              <option value="4">4 Star</option>
+              <option value="5">5 Star</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <label for="validationServer05">Shop Name</label>
+            <input
+              class="form-control"
+              required
+              name="shop_name"
+              [(ngModel)]="productDetails.vendor_name"
+              ngModel
+            />
+          </div>
+          <div class="col">
+            <label for="validationServer06">Is Avilable &nbsp;</label>
+            <select
+              class="custom-select"
+              required
+              name="product_isAvailable"
+              [(ngModel)]="productDetails.is_available"
+              ngModel
+            >
+              <option selected value=" ">Choose Value</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <label for="validationServer07">Product Price</label>
+            <input
+              class="form-control"
+              required
+              name="product_price"
+              [(ngModel)]="productDetails.price"
+              ngModel
+            />
+          </div>
+          <div class="col">
+            <label for="validationServer08">Review &nbsp;</label>
+            <select
+              class="custom-select"
+              required
+              name="product_review"
+              [(ngModel)]="productDetails.review"
+              ngModel
+            >
+              <option selected value=" ">Choose Value</option>
+              <option value="100">1x</option>
+              <option value="200">2x</option>
+              <option value="300">3x</option>
+              <option value="400">4x</option>
+              <option value="500">5x</option>
+            </select>
+          </div>
+
+          <div class="col-12" style="margin-bottom: 10px">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

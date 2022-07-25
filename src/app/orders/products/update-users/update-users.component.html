@@ -1,0 +1,98 @@
+<h2 class="bg-light mb-2 text-center">Update User</h2>
+<!-- Product section-->
+
+<section class="py-0" *ngFor="let productDetails of UserList">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <form
+        (submit)="updateProduct(updateProductForm)"
+        #updateProductForm="ngForm"
+      >
+        <div class="col">
+          <label for="validationServer01">User name</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="fullname"
+            [(ngModel)]="productDetails.fullname"
+            ngModel
+          />
+        </div>
+        <div class="col">
+          <label for="validationServer01">Email Adderss</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="email"
+            [(ngModel)]="productDetails.email"
+            ngModel
+          />
+        </div>
+        <div class="col">
+          <label for="validationServer01">Mobile Number</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="mobile"
+            [(ngModel)]="productDetails.mobile"
+            ngModel
+          />
+        </div>
+        <div class="col">
+          <label for="validationServer03">Adderss</label>
+          <textarea
+            class="form-control"
+            required
+            name="address"
+            [(ngModel)]="productDetails.address"
+            ngModel
+          ></textarea>
+        </div>
+
+        <div class="col">
+          <label for="validationServer04">Type &nbsp;</label>
+          <select
+            class="custom-select"
+            required
+            name="type"
+            [(ngModel)]="productDetails.type"
+            ngModel
+          >
+            <option selected value=" ">Choose Value</option>
+            <option value="Customer">Customer</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <!-- <div class="col">
+          <label for="validationServer01">Type</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="type"
+            [(ngModel)]="productDetails.type"
+            ngModel
+          />
+        </div> -->
+        <div class="col">
+          <label for="validationServer01">Password</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="password"
+            [(ngModel)]="productDetails.password"
+            ngModel
+          />
+        </div>
+
+        <div class="col-12" style="margin-bottom: 10px">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

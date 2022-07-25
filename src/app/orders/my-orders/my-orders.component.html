@@ -1,0 +1,67 @@
+<h3>My Orders</h3>
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col" rowspan="2">Id</th>
+
+      <th scope="col" rowspan="2">Date</th>
+
+      <th scope="col" colspan="4" class="text-center">Order Details</th>
+      <th scope="col" rowspan="2">Final Total</th>
+      <th scope="col" rowspan="2">Tax</th>
+      <th scope="col" rowspan="2">Grand Total</th>
+      <th scope="col" rowspan="2">Status</th>
+    </tr>
+    <tr>
+      <!-- <th scope="col">Id</th> -->
+      <!-- <th scope="col">image</th> -->
+      <th scope="col">Product_Name</th>
+
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let orders of orderlist; let i = index">
+    <tr>
+      <th scope="row" [attr.rowspan]="orders.order.length + 1">
+        {{ orders.id }}
+      </th>
+
+      <td [attr.rowspan]="orders.order.length + 1">
+        {{ orders.date | date: "dd-MM-yyyy" }}
+      </td>
+
+      <td colspan="4"></td>
+
+      <td [attr.rowspan]="orders.order.length + 1">
+        {{ orders.grand }}
+      </td>
+      <td [attr.rowspan]="orders.order.length + 1">
+        {{ orders.grand * 0.1 }}
+      </td>
+      <td [attr.rowspan]="orders.order.length + 1">
+        {{ orders.grand + orders.grand * 0.1 }}
+      </td>
+
+      <!-- <td>
+        <ng-container *ngFor="let o of orders.order">
+          {{ o.id }}
+        </ng-container>
+      </td> -->
+
+      <td [attr.rowspan]="orders.order.length + 1">{{ orders.status }}</td>
+    </tr>
+
+    <ng-container *ngFor="let o of orders.order">
+      <tr>
+        <!-- <td>{{ o.id }}</td> -->
+        <!-- <td><img src="{{ o.productImg }}" height="80px" width="80px" /></td> -->
+        <td>{{ o.productName }}</td>
+        <td>{{ o.price }}</td>
+        <td>{{ o.quantity }}</td>
+        <td>{{ o.total }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

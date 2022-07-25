@@ -1,0 +1,30 @@
+
+
+
+<ng-container *ngIf="router.url != '/login'">
+  <ng-container *ngIf="router.url != '/signup'">
+    <app-header></app-header>
+
+    <div class="container">
+      <!-- <div class="row"> -->
+      <!-- <div class="col-lg-2">
+<app-sidebar></app-sidebar>
+    </div> -->
+      <!-- <div class="col-lg-10"> -->
+      <router-outlet></router-outlet>
+      <!-- </div> -->
+      <!-- </div> -->
+    </div>
+
+    <app-footer></app-footer> </ng-container
+></ng-container>
+<ng-container *ngIf="router.url == '/login'">
+  <div class="container1">
+    <router-outlet></router-outlet>
+  </div>
+</ng-container>
+<ng-container *ngIf="router.url == '/signup'">
+  <div class="container1">
+    <router-outlet></router-outlet>
+  </div>
+</ng-container>

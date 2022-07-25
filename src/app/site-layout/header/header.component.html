@@ -1,0 +1,156 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <div class="container px-4 px-lg-5">
+    <ng-container *ngIf="userData?.type == Customer">
+      <a
+        class="navbar-brand"
+        (click)="home()"
+        style="font-size: 25px !important"
+        >Cloud Kitchen</a
+      ></ng-container
+    >
+    <ng-container *ngIf="userData?.type == Admin">
+      <a
+        class="navbar-brand"
+        style="font-size: 25px !important"
+        (click)="admin()"
+        >Admin</a
+      ></ng-container
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <ng-container *ngIf="userData?.type == Customer">
+          <li class="nav-item">
+            <a class="nav-link active" (click)="home()" aria-current="page"
+              >Home</a
+            >
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdown"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >Categories</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a href="products/" class="list-group-item text-center">
+                  View All Products
+                </a>
+              </li>
+              <li *ngFor="let catg of categoryList">
+                <a
+                  href="products/category/{{ catg.id }}"
+                  class="list-group-item text-center"
+                >
+                  {{ catg.categoryName }}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" (click)="myorder()" aria-current="page"
+              >My-Orders</a
+            >
+          </li>
+        </ng-container>
+        <ng-container *ngIf="userData?.type == Admin">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              href="/products/view-table"
+              aria-current="page"
+            >
+              Products</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              href="/products/view-category"
+              aria-current="page"
+            >
+              Categories</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              href="/products/view-user"
+              aria-current="page"
+            >
+              Users</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" (click)="order()" aria-current="page"
+              >Orders</a
+            >
+          </li>
+        </ng-container>
+      </ul>
+      <ul class="navbar-nav" *ngIf="lSuser">
+        <li class="nav-item">
+          <a aria-current="page" class="nav-link active">{{
+            userData?.fullname
+          }}</a>
+        </li>
+        <li class="nav-item">
+          <a aria-current="page" class="nav-link active"> |</a>
+        </li>
+
+        <li class="nav-item">
+          <a aria-current="page" class="nav-link active" (click)="login()">
+            Logout</a
+          >
+        </li>
+      </ul>
+
+      <ul class="navbar-nav" *ngIf="!lSuser">
+        <li class="nav-item">
+          <a aria-current="page" class="nav-link active" (click)="login()"
+            >login</a
+          >
+        </li>
+        <li class="nav-item">
+          <a aria-current="page" class="nav-link active"> |</a>
+        </li>
+
+        <li class="nav-item">
+          <a aria-current="page" class="nav-link active" (click)="signup()">
+            Signup</a
+          >
+        </li>
+      </ul>
+      <ng-container *ngIf="userData?.type == Customer">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <form class="d-flex">
+              <button class="btn btn-outline-dark" (click)="gocart()">
+                <i class="bi-cart-fill me-1"></i>
+                Cart
+                <span>{{ count }}</span>
+              </button>
+            </form>
+          </li>
+        </ul>
+      </ng-container>
+    </div>
+  </div>
+</nav>

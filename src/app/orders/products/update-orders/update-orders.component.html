@@ -1,0 +1,34 @@
+<h2 class="bg-light mb-2 text-center">Update Product</h2>
+<!-- Product section-->
+
+<section class="py-0" *ngFor="let productDetails of orderList">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <form
+        (submit)="updateProduct(updateProductForm)"
+        #updateProductForm="ngForm"
+      >
+        <div class="col">
+          <label for="validationServer04">Status &nbsp;</label>
+          <select
+            class="custom-select"
+            required
+            name="status"
+            [(ngModel)]="productDetails.status"
+            ngModel
+          >
+            <option selected value=" ">Choose Value</option>
+            <option value="pending">Pending</option>
+            <option value="dispatched">Dispatched</option>
+            <option value="cooking">Cooking</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+
+        <div class="col-12" style="margin-bottom: 10px">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+<h2 class="bg-light mb-2 text-center">Update Product</h2>
+<!-- Product section-->
+
+<section class="py-0">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <form
+        (submit)="updateProduct(updateProductForm)"
+        #updateProductForm="ngForm"
+      >
+        <div class="col">
+          <label for="validationServer01">Product name</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="product_category"
+            ngModel
+          />
+        </div>
+
+        <div class="col-12" style="margin-bottom: 10px">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

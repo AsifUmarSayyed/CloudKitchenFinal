@@ -1,0 +1,52 @@
+<!-- Section-->
+<section class="py-0 mt-4">
+  <div class="container px-4 px-lg-5 mt-0">
+    <h3 class="mb-3" *ngFor="let a of categoryName">
+      Showing Products by Category {{ a.categoryName }}
+    </h3>
+    <div class="row">
+      <ng-container *ngFor="let prd of productList">
+        <ng-container *ngIf="prd.is_available == 1">
+          <div class="col col-lg-3 mb-5">
+            <div class="card h-100">
+              <!-- Product image-->
+              <img
+                class="card-img-top"
+                src="{{ prd.productImg }}"
+                height="250px"
+                alt="..."
+              />
+              <!-- Product details-->
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">
+                    {{ prd.productName }}
+                  </h5>
+                  <p>{{ prd.decriptions.slice(0, 50) }}...</p>
+                  <!-- Product price-->
+                  {{ prd.price | currency: "INR":"symbol" }}
+                </div>
+                <div class="text-center">
+                  <small class="text-muted text-center"
+                    >Rating: {{ prd.rating }} star</small
+                  >
+                </div>
+              </div>
+              <!-- Product actions-->
+              <div class="card-footer p-3 pt-0 border-top-0 bg-transparent">
+                <div class="text-center">
+                  <a
+                    class="btn btn-outline-dark mt-auto"
+                    href="/products/view-product/{{ prd.id }}"
+                    >View options</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</section>

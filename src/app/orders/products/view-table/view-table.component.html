@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"><h3>Manage Products</h3></div>
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="productName"
+            [(ngModel)]="productName"
+            (ngModelChange)="search()"
+            placeholder="Enter Product Name"
+          />
+        </div>
+        <div class="col">
+          <select
+            class="custom-select"
+            required
+            name="category_id"
+            [(ngModel)]="category_id"
+            (ngModelChange)="csearch(category_id)"
+            ngModel
+          >
+            <option selected value="">Choose Category</option>
+            <ng-container *ngFor="let c of categoryList">
+              <option [attr.value]="c.id">
+                {{ c.categoryName }}
+              </option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 d-grid gap-2 d-md-flex justify-content-md-end p-2">
+      <button
+        class="btn btn-primary me-md-2"
+        type="button"
+        routerLink="/products/add-product"
+      >
+        Add New
+      </button>
+    </div>
+  </div>
+
+  <table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Image</th>
+        <th scope="col">Category</th>
+        <th scope="col">Decriptions</th>
+        <th scope="col">Price</th>
+        <th scope="col">Available(1/0)</th>
+        <th scope="col">rating</th>
+        <th scope="col">review</th>
+        <th scope="col">vendor_name</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let prd of productList">
+      <tr>
+        <th scope="row">{{ prd.id }}</th>
+        <td>{{ prd.productName }}</td>
+        <td><img src="{{ prd.productImg }}" height="50px" width="50px" /></td>
+        <ng-container *ngFor="let catg of categoryList">
+          <td class="text-center" *ngIf="catg.id == prd.category_id">
+            {{ catg.categoryName.trim() }}
+          </td>
+        </ng-container>
+        <td>{{ prd.decriptions.slice(0, 50) }}</td>
+        <td>{{ prd.price }}</td>
+        <td>{{ prd.is_available }}</td>
+        <td>{{ prd.rating }}</td>
+        <td>{{ prd.review }}</td>
+        <td>{{ prd.vendor_name }}</td>
+        <td>
+          <button type="button" class="btn btn-info" (click)="update(prd)">
+            Update
+          </button>
+        </td>
+        <td>
+          <button (click)="delete(prd)" type="button" class="btn btn-danger">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

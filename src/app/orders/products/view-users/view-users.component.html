@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"><h3>Manage Products</h3></div>
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            required
+            name="fullname"
+            [(ngModel)]="fullname"
+            (ngModelChange)="search()"
+            placeholder="Enter User Name"
+          />
+        </div>
+        <div class="col">
+          <label for="validationServer04">Type &nbsp;</label>
+          <select
+            class="custom-select"
+            required
+            name="type"
+            [(ngModel)]="type"
+            (ngModelChange)="tsearch()"
+            ngModel
+          >
+            <option value="Customer">Customer</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile</th>
+
+        <th scope="col">Address</th>
+        <th scope="col">Password</th>
+
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let catg of userList">
+      <tr>
+        <th scope="row">{{ catg.id }}</th>
+        <td>{{ catg.fullname }}</td>
+        <td>{{ catg.type }}</td>
+        <td>{{ catg.email }}</td>
+        <td>{{ catg.mobile }}</td>
+        <td>{{ catg.address }}</td>
+        <td>{{ catg.password }}</td>
+
+        <td>
+          <button type="button" class="btn btn-info" (click)="update(catg)">
+            Update
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(catg)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
